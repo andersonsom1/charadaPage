@@ -41,7 +41,7 @@
         let indice = 0;
 
         async function carregarCharadas() {
-            const resposta = await fetc h('charadas.json');
+            const resposta = await fetch('charadas.json');
             charadas = await resposta.json();
             mostrarCharada();
         }
