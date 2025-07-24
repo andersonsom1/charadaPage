@@ -1,5 +1,5 @@
 <html>
-<head>
+  <head>
     <title>Charadas</title>
     <script src="index.js"></script>
     <script src="index-postgres.js"></script>
@@ -7,23 +7,22 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="favicon.jpg">
     <style>
-        input {
-            width: 500px;
-        }
+      input {
+        width: 500px;
+      }
 
-        img {
-            width: 200px;
-        }
+      img {
+        width: 200px;
+      }
     </style>
     <script>
-        function verResposta() {
-            document.getElementById('resposta').hidden = false;
-        }
+      function verResposta() {
+        document.getElementById('resposta').hidden = false;
+      }
     </script>
-</head>
+  </head>
   <body>
     <h1>Charada</h1>
-    <img src="charada.jpg" alt="Charada"> <br /> <br />
     <input type="text" value="{{pergunta}}" readonly/> <br /> <br />
     <button onclick="verResposta()">Ver resposta</button> <br /> <br />
     <input type="text" value="{{resposta}}" readonly hidden id="resposta"/> <br /> <br />
