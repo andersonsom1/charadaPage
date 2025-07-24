@@ -47,6 +47,7 @@
         }
 
         function mostrarCharada() {
+            indice = Math.floor(Math.random() * charadas.length);
             document.getElementById('pergunta').value = charadas[indice].pergunta;
             document.getElementById('resposta').textContent = '';
         }
