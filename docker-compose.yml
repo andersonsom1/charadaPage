@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  app:
+    image: node:10
+    ports:
+      - 8090:3000
+    volumes:
+      - ../app/:/usr/app
+    working_dir: /usr/app
+    entrypoint: node index.js
+    depends_on:
+      - db
+    networks:
+      - charadas
+
+  db:
+    image: postgres
+    ports: 
+      - 8091:5432
+    volumes:
+      - ../db:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: helton
+      POSTGRES_PASSWORD: postgres-password
+    networks:
+      - charadas
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 8092:80
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: heltoncarlossouza@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin-password
+    networks:
+      - charadas
+
+networks:
+  charadas:
+    driver: bridge

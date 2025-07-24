@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Charadas</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.jpg">
+    <style>
+      input {
+        width: 500px;
+      }
+      img {
+        width: 200px;
+      }
+    </style>
+    <script>
+      function verResposta() {
+        document.getElementById('resposta').hidden = false;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Charada</h1>
+    <img src="/charada.jpg" alt="Charada"> <br /> <br />
+    <input type="text" value="{{pergunta}}" readonly/> <br /> <br />
+    <button onclick="verResposta()">Ver resposta</button> <br /> <br />
+    <input type="text" value="{{resposta}}" readonly hidden id="resposta"/> <br /> <br />
+  </body>
+</html>
