@@ -1,27 +1,66 @@
-<html>
-  <head>
-    <title>Charadas</title>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="favicon.jpg">
+    <title>Charadas Interativas</title>
     <style>
-      input {
-        width: 500px;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
 
-      img {
-        width: 200px;
-      }
+        #resposta {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        #pergunta {
+            width: 100%;
+        }
+
+        #container {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        #proxima {
+            margin-left: 10px;
+        }
     </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Charadas</h1>
+        <input type="text" id="pergunta" readonly>
+        <button id="verResposta">Ver resposta</button>
+        <button id="proxima">Próxima</button>
+        <div id="resposta"></div>
+    </div>
     <script>
-      function verResposta() {
-        document.getElementById('resposta').hidden = false;
-      }
+        let charadas = [];
+        let indice = 0;
+
+        async function carregarCharadas() {
+            const resposta = await fetc h('charadas.json');
+            charadas = await resposta.json();
+            mostrarCharada();
+        }
+
+        function mostrarCharada() {
+            document.getElementById('pergunta').value = charadas[indice].pergunta;
+            document.getElementById('resposta').textContent = '';
+        }
+
+        document.getElementById('verResposta').onclick = function () {
+            document.getElementById('resposta').textContent = charadas[indice].resposta;
+        };
+
+        document.getElementById('proxima').onclick = function () {
+            indice = (indice + 1) % charadas.length;
+            mostrarCharada();
+        };
+
+        carregarCharadas();
     </script>
-  </head>
-  <body>
-    <h1>Charada</h1>
-    <input type="text" value="{{pergunta}}" readonly/> <br /> <br />
-    <button onclick="verResposta()">Ver resposta</button> <br /> <br />
-    <input type="text" value="{{resposta}}" readonly hidden id="resposta"/> <br /> <br />
-  </body>
+</body>
 </html>
