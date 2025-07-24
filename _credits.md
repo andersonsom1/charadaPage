@@ -1,0 +1,2 @@
+- Riddle image by Phil Cho from Devian Art: https://www.deviantart.com/phil-cho/art/Riddler-on-the-loose-548585792
+- Riddles extracted from: https://github.com/kivson/charadas
